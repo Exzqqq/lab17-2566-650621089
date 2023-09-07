@@ -159,6 +159,7 @@ export const DELETE = async (request) => {
   const foundEnroll = DB.enrollments.find(x=>x.studentId===studentId&&x.courseNo===courseNo)
 
   DB.enrollments = DB.enrollments.filter((std) => std !== foundEnroll);
+  DB.students = DB.students.filter((std) => std !== foundStudent);
   if(!foundCourse||!foundStudent){
     return NextResponse.json(
       {
